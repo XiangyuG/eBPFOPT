@@ -1,0 +1,6 @@
+[submodule "third_party/katran"]
+	path = third_party/katran
+	url = https://github.com/facebookincubator/katran.git
+[submodule "third_party/alive2"]
+	path = third_party/alive2
+	url = https://github.com/AliveToolkit/alive2.git
