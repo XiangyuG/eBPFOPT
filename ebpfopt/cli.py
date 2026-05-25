@@ -13,6 +13,11 @@ from .extract import extract_first_c_block
 from .prompt import build_request, read_text, validate_request
 
 
+def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
 def optimize(args: argparse.Namespace) -> int:
     prompt_text = read_text(args.prompt)
     source_text = read_text(args.source) if args.source else None
@@ -22,7 +27,7 @@ def optimize(args: argparse.Namespace) -> int:
         print(f"warning: {warning}", file=sys.stderr)
 
     if args.dry_run:
-        args.output.write_text(request, encoding="utf-8")
+        write_text(args.output, request)
         print(f"Wrote assembled prompt to {args.output}")
         return 0
 
@@ -37,12 +42,12 @@ def optimize(args: argparse.Namespace) -> int:
     )
 
     output_text = response.output_text
-    args.output.write_text(output_text, encoding="utf-8")
+    write_text(args.output, output_text)
     print(f"Wrote optimizer response to {args.output}")
 
     if args.c_output:
         c_program = extract_first_c_block(output_text)
-        args.c_output.write_text(c_program, encoding="utf-8")
+        write_text(args.c_output, c_program)
         print(f"Wrote optimized C program to {args.c_output}")
 
     return 0
