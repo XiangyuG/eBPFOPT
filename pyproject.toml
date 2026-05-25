@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ebpfopt"
+version = "0.1.0"
+description = "Prompt-driven optimizer skeleton for XDP/eBPF C programs."
+requires-python = ">=3.9"
+dependencies = [
+    "openai",
+    "z3-solver",
+]
+
+[project.scripts]
+ebpfopt = "ebpfopt.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ebpfopt*"]
+exclude = ["third_party*", "examples*"]
