@@ -1,5 +1,8 @@
 .env
 build/
+demo/build/
+demo/*.ll
+demo/add_tgt
 *.egg-info/
 __pycache__/
 *.py[cod]
