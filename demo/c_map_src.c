@@ -1,4 +1,6 @@
-typedef unsigned int u32;
+#include <stdint.h>
+
+typedef uint32_t u32;
 
 #define MAP_SIZE 4
 
