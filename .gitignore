@@ -2,6 +2,7 @@
 build/
 demo/build/
 demo/*.ll
+demo/*.bc
 *.egg-info/
 __pycache__/
 *.py[cod]
